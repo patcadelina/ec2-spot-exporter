@@ -1,0 +1,7 @@
+repository:
+    path: github.com/patcadelina/ec2-spot-exporter
+build:
+    flags: -a -tags -netgo
+tarball:
+    files:
+        - LICENSE
