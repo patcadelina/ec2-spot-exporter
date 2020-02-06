@@ -9,6 +9,10 @@ make
 ```
 ./ec2-spot-exporter
 ```
+## Using Docker
+```
+docker run -p 9671:9671 -e AWS_REGION=<value> -e AWS_ACCESS_KEY_ID=<value> -e AWS_SECRET_ACCESS_KEY=<value>
+```
 ## Metrics
 | Name | Description |
 | ---- | ---- |

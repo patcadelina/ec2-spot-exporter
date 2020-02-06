@@ -508,6 +508,6 @@ func init() {
 
 func main() {
 	http.Handle("/metrics", promhttp.Handler())
-	log.Print("Starting EC2 Spot Exporter on port 9659...")
-	log.Fatal(http.ListenAndServe(":9659", nil))
+	log.Print("Starting EC2 Spot Exporter on port 9671...")
+	log.Fatal(http.ListenAndServe(":9671", nil))
 }
