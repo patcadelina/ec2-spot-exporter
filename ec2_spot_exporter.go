@@ -256,9 +256,7 @@ func (c *Collector) Describe(ch chan<- *prometheus.Desc) {
 }
 
 func (c *Collector) Collect(ch chan<- prometheus.Metric) {
-	sess := session.Must(session.NewSessionWithOptions(session.Options{
-		SharedConfigState: session.SharedConfigEnable,
-	}))
+	sess := session.Must(session.NewSession())
 
 	svc := ec2.New(sess)
 	input := &ec2.DescribeSpotInstanceRequestsInput{
