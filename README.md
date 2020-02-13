@@ -11,7 +11,11 @@ make
 ```
 ## Using Docker
 ```
-docker run -p 9671:9671 -e AWS_REGION=<value> -e AWS_ACCESS_KEY_ID=<value> -e AWS_SECRET_ACCESS_KEY=<value>
+docker pull patcadelina/ec2-spot-exporter
+```
+Set Environment Variables
+```
+docker run -p 9671:9671 -e AWS_REGION=<value> -e AWS_ACCESS_KEY_ID=<value> -e AWS_SECRET_ACCESS_KEY=<value> ec2-spot-exporter
 ```
 ## Metrics
 | Name | Description |
