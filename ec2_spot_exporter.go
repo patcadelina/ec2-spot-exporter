@@ -26,7 +26,8 @@ import (
 )
 
 const (
-	Namespace = "ec2_spot"
+	Namespace   = "ec2_spot"
+	MetricsPath = "/metrics"
 )
 
 type Collector struct {
@@ -535,7 +536,20 @@ func init() {
 }
 
 func main() {
-	http.Handle("/metrics", promhttp.Handler())
+	http.Handle(MetricsPath, promhttp.Handler())
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		_, err := w.Write([]byte(`<html>
+			<title>AWS EC2 Spot Exporter</title>
+			<body>
+			<h1>AWS EC2 Spot Exporter</h1>
+			<p><a href='` + MetricsPath + `'>Metrics</a></p>
+			</html>`))
+		if err != nil {
+			log.Printf("Write failed: %v", err)
+		}
+	})
+
 	log.Print("Starting EC2 Spot Exporter on port 9671...")
 	log.Fatal(http.ListenAndServe(":9671", nil))
 }
